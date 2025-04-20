@@ -2,11 +2,11 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { ReactNode } from 'react'
 
-type Auth0HandleAuthWrapperProp = Readonly<{
+type AuthLoadingHandlerProps = Readonly<{
    children: ReactNode
 }>
 
-function Auth0HandlerWrapper(prop: Auth0HandleAuthWrapperProp) {
+function AuthLoadingHandler(props: AuthLoadingHandlerProps) {
 
    const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
 
@@ -15,10 +15,10 @@ function Auth0HandlerWrapper(prop: Auth0HandleAuthWrapperProp) {
 
    if (!isAuthenticated) {
       loginWithRedirect().then()
-      return <div>xxx...</div>
+      return <div>xxx...</div> // TODO
    }
 
-   return <div>{prop.children}</div>
+   return <div>{props.children}</div>
 }
 
-export default Auth0HandlerWrapper
+export default AuthLoadingHandler

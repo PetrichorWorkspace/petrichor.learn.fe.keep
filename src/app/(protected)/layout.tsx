@@ -1,12 +1,16 @@
 import { ReactNode } from 'react'
-import Auth0HandlerWrapper from '@/app/(protected)/_components/auth0-handler-wrapper'
+import AuthLoadingHandler from '@/app/(protected)/_components/auth-loading-handler'
 
-type ProtectedLayoutProp = Readonly<{
+type ProtectedLayoutProps = Readonly<{
    children: ReactNode;
 }>
 
-function ProtectedLayout(prop: ProtectedLayoutProp) {
-   return <Auth0HandlerWrapper>{prop.children}</Auth0HandlerWrapper>
+function ProtectedLayout(props: ProtectedLayoutProps) {
+   return (
+      <AuthLoadingHandler>
+         {props.children}
+      </AuthLoadingHandler>
+   )
 }
 
 export default ProtectedLayout
